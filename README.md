@@ -1,7 +1,9 @@
 # duststorm
-A simple wrapper for weather APIs
+Receive current, daily, and hourly weather forecasts from multiple APIs.
 
 ## Installation
+
+_*Important: This gem is not yet published*_
 
 Add this line to your application's Gemfile:
 

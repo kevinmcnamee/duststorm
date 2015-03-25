@@ -6,11 +6,12 @@ describe Duststorm::Base do
 
   describe '#forecast' do
     let(:faraday) { double(:faraday, get: response) }
-    let(:response) { {some: :response} }
+    let(:response) { double(:response, body: {}) }
 
     before do
       Duststorm.config = { some_forecast: '12345' }
       allow(Faraday).to receive(:new) { faraday }
+      allow(Duststorm::Forecast).to receive(:new).with(response)
     end
 
     it "sends through a standard request" do
@@ -19,6 +20,10 @@ describe Duststorm::Base do
       ).and_return(response)
 
       duststorm.forecast
+    end
+
+    it 'instantiates a new forecast with response' do
+      expect(Duststorm::Forecast).to receive(:new).with(response.body)
     end
   end
 end

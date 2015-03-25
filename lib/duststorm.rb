@@ -1,7 +1,6 @@
 require 'duststorm/version'
 require 'duststorm/base'
 
-require 'hashie'
 require 'multi_json'
 require 'faraday'
 
