@@ -8,12 +8,6 @@ describe Duststorm::Base do
     let(:faraday) { double(:faraday, get: response) }
     let(:response) { {some: :response} }
 
-    around do |example|
-      cached_config = Duststorm.config
-      example.run
-      Duststorm.config = cached_config
-    end
-
     before do
       Duststorm.config = { some_forecast: '12345' }
       allow(Faraday).to receive(:new) { faraday }

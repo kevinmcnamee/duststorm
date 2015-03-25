@@ -15,6 +15,9 @@ end
 Faraday.default_adapter = :typhoeus
 
 RSpec.configure do |config|
-  config.before(:each) do
+  config.around(:each) do |spec|
+    cached_config = Duststorm.config
+    spec.run
+    Duststorm.config = cached_config
   end
 end
