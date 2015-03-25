@@ -1,0 +1,17 @@
+*.gem
+.bundle
+Gemfile.lock
+tmp
+.DS_Store
+coverage
+rdoc
+pkg
+lib/attic
+coverage
+.rvmrc
+.rspec
+.bundle
+Gemfile.lock
+.ruby-version
+.rbx
+tags
