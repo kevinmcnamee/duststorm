@@ -1,29 +1,37 @@
 require 'spec_helper'
 
-describe Duststorm::Base do
-  let(:duststorm) { Duststorm::Base.new('90.32', '-40.232', options) }
-  let(:options) { {} }
+module Duststorm
+  describe Base do
+    let(:duststorm) { Base.new('90.32', '-40.232', options) }
+    let(:options) { {} }
 
-  describe '#forecast' do
-    let(:faraday) { double(:faraday, get: response) }
-    let(:response) { double(:response, body: {}) }
+    describe '#forecast' do
+      let(:faraday) { double(:faraday, get: response) }
+      let(:response) { double(:response, success?: true, body: MultiJson.dump({})) }
 
-    before do
-      Duststorm.config = { some_forecast: '12345' }
-      allow(Faraday).to receive(:new) { faraday }
-      allow(Duststorm::Forecast).to receive(:new).with(response)
+      before do
+        allow(Faraday).to receive(:new) { faraday }
+        allow(Forecast).to receive(:new).with(json_response)
+
+        Duststorm.config = { some_forecast: '12345' }
+      end
+
+      it "sends through a standard request" do
+        expect(faraday).to receive(:get).with(
+          'https://api.forecast.io/forecast/12345/90.32,-40.232', {}
+        ).and_return(response)
+
+        duststorm.forecast
+      end
+
+      it 'instantiates a new forecast with response' do
+        expect(Forecast).to receive(:new).with(json_response)
+        duststorm.forecast
+      end
     end
 
-    it "sends through a standard request" do
-      expect(faraday).to receive(:get).with(
-        'https://api.forecast.io/forecast/12345/90.32,-40.232', {}
-      ).and_return(response)
-
-      duststorm.forecast
-    end
-
-    it 'instantiates a new forecast with response' do
-      expect(Duststorm::Forecast).to receive(:new).with(response.body)
+    def json_response
+      MultiJson.load(response.body, symbolize_keys: true)
     end
   end
 end

@@ -1,5 +1,7 @@
 require 'duststorm/version'
 require 'duststorm/base'
+require 'duststorm/forecast'
+require 'duststorm/attribute'
 
 require 'multi_json'
 require 'faraday'

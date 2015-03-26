@@ -11,13 +11,21 @@ module Duststorm
     end
 
     def forecast
-      response = conn.get(forecast_url, params)
+      if response.success?
+        Forecast.new(
+          MultiJson.load(response.body, :symbolize_keys => true)
+        )
+      end
     end
 
     private
 
+    def response
+      @response ||= conn.get(forecast_url, params)
+    end
+
     def conn
-      @conn ||= Faraday.new
+      Faraday.new
     end
 
     def forecast_url

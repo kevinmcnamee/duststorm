@@ -15,7 +15,7 @@ describe 'Base Forecast' do
     VCR.use_cassette('forecast_for_latitude_longitude', record: :once) do
       forecast = duststorm.forecast
 
-      expect(forecast).to be_a(Forecast)
+      expect(forecast).to be_a(Duststorm::Forecast)
 
       expect(forecast).to_not be_nil
       expect(forecast.latitude).to eq(37.8267)
