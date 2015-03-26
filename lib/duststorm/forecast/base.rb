@@ -6,10 +6,17 @@ module Duststorm
       include Virtus.model
 
       attribute :latitude, Duststorm::Attribute::Coordinate
-      # attribute :longitude, Attribute::Coordinate
-      # attribute :currently, Weather::Current
-      # attribute :current, Weather::Current
-      # attribute :current, Weather::Current
+      attribute :longitude, Duststorm::Attribute::Coordinate
+      attribute :currently, Duststorm::Weather::Current
+      attribute :daily, [Duststorm::Weather::Daily]
+      attribute :hourly, [Duststorm::Weather::Hourly]
+
+      def initialize(args, &block)
+        args[:hourly] = args[:hourly][:data]
+        args[:daily] = args[:daily][:data]
+
+        super
+      end
     end
   end
 end

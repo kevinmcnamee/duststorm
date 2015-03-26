@@ -1,8 +1,9 @@
 module Duststorm
   module Attribute
-    class Coordinate < Virtus::Attribute
+    class Time < Virtus::Attribute
       def coerce(value)
-        value.to_f
+        return unless value
+        ::Time.at(value)
       end
     end
   end
