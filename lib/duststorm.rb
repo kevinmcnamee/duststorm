@@ -3,6 +3,7 @@ require_relative 'duststorm/base'
 require_relative 'duststorm/attribute'
 require_relative 'duststorm/weather'
 require_relative 'duststorm/forecast'
+require_relative 'duststorm/api'
 
 require 'multi_json'
 require 'faraday'
