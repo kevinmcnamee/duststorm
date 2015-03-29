@@ -13,6 +13,22 @@ module Duststorm
         response[:daily][:data]
       end
 
+      def sunrise_key
+        :sunriseTime
+      end
+
+      def sunset_key
+        :sunsetTime
+      end
+
+      def high_temperature_key
+        :temperatureMin
+      end
+
+      def low_temperature_key
+        :temperatureMax
+      end
+
       def precipitation_key
         :precipProbability
       end
