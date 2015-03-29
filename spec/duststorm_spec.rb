@@ -13,8 +13,8 @@ describe Duststorm do
   end
 
   describe '.config' do
-    it 'does not have a default value' do
-      expect( Duststorm.config ).to be nil
+    it 'has an empty hash default value' do
+      expect( Duststorm.config ).to be {}
     end
 
     it 'sets a value' do

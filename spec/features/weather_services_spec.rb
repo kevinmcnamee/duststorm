@@ -25,6 +25,9 @@ describe 'ForecastIo forecast' do
       Duststorm::WeatherApi::ForecastIo.new(lat, lng, options).execute
     end
 
+    it 'has the correct keys' do
+      expect(weather_services_response).to be_a_forecast_json
+    end
 
     it 'maps the proper attributes' do
       expect_proper_api_mapping

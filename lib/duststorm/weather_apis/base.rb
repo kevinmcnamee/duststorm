@@ -1,6 +1,8 @@
 module Duststorm
   module WeatherApi
     class Base
+      include Utils::ResponseMapper
+
       attr_reader :lat, :lng, :options
 
       def initialize(lat, lng, options={})
@@ -28,10 +30,6 @@ module Duststorm
       end
 
       private
-
-      def mapped_response_body
-        parsed_response_body
-      end
 
       def parsed_response_body
         MultiJson.load(response.body, :symbolize_keys => true)

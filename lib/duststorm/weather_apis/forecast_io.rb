@@ -1,13 +1,24 @@
 module Duststorm
   module WeatherApi
     class ForecastIo < Base
-      def mapped_response_body
-        response = parsed_response_body.dup
+      def currently_response(response)
+        response[:currently]
+      end
 
-        response[:hourly] = response[:hourly][:data]
-        response[:daily] = response[:daily][:data]
+      def hourly_response(response)
+        response[:hourly][:data]
+      end
 
-        response
+      def daily_response(response)
+        response[:daily][:data]
+      end
+
+      def precipitation_key
+        :precipProbability
+      end
+
+      def wind_speed_key
+        :windSpeed
       end
 
       private

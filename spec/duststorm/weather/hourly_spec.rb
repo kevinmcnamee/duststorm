@@ -8,7 +8,7 @@ module Duststorm
           time: 1427320800,
           summary: "Clear",
           precipIntensity: 0,
-          precipProbability: 0,
+          precipitation: 0,
           temperature: 64.78,
           apparentTemperature: 64.78,
         }
