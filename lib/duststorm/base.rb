@@ -9,7 +9,7 @@ module Duststorm
     end
 
     def forecast
-      Forecast.new(weather_data)
+      @forecast ||= Forecast.new(weather_data)
     end
 
     private
