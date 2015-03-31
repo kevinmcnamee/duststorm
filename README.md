@@ -1,25 +1,41 @@
 # duststorm
+[![Gem Version](https://badge.fury.io/rb/duststorm.svg)](http://badge.fury.io/rb/duststorm)
+[![Code Climate](https://codeclimate.com/github/kevinmcnamee/duststorm/badges/gpa.svg)](https://codeclimate.com/github/kevinmcnamee/duststorm)
+[![Test Coverage](https://codeclimate.com/github/kevinmcnamee/duststorm/badges/coverage.svg)](https://codeclimate.com/github/kevinmcnamee/duststorm)
+
 Receive current, daily, and hourly weather forecasts from multiple APIs.
 
 ## Installation
 
-_*Important: This gem is not yet published*_
-
-Add this line to your application's Gemfile:
+1) Add this line to your application's Gemfile:
 
     gem 'duststorm'
 
-And then execute:
+2) And then execute:
 
-    $ bundle
+    $ bundle install
 
-Or install it yourself as:
+3) Create a configuration file in config/duststorm.rb and add the following:
 
-    $ gem install duststorm
+    Duststorm.config = { forecast_io: FORECAST_IO_API_KEY }
+
+_**This gem currently only supports the [ForecastIo api](https://developer.forecast.io/).**_
 
 ## Usage
 
-TODO: Write usage instructions here
+````ruby
+require 'duststorm'
+
+duststorm = Duststorm.new(latitude, longitude)
+
+forecast = duststorm.forecast
+
+forecast.currently
+forecast.daily
+forecast.hourly
+
+puts forecast
+````
 
 ## Contributing
 
