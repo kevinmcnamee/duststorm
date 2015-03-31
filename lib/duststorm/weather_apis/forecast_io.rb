@@ -22,11 +22,11 @@ module Duststorm
       end
 
       def high_temperature_key
-        :temperatureMin
+        :temperatureMax
       end
 
       def low_temperature_key
-        :temperatureMax
+        :temperatureMin
       end
 
       def precipitation_key
