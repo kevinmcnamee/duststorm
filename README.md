@@ -17,7 +17,9 @@ Receive current, daily, and hourly weather forecasts from multiple APIs.
 
 3) Create a configuration file in config/duststorm.rb and add the following:
 
-    Duststorm.config = { forecast_io: FORECAST_IO_API_KEY }
+````ruby
+Duststorm.config = { forecast_io: FORECAST_IO_API_KEY }
+````
 
 _**This gem currently only supports the [ForecastIo api](https://developer.forecast.io/).**_
 
